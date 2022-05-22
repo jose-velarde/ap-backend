@@ -6,10 +6,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import com.ap.apbackend.Exceptions.EducationNotFoundException;
+import com.ap.apbackend.Exceptions.ProfileNotFoundException;
 import com.ap.apbackend.Model.Education;
+import com.ap.apbackend.Repository.EducationRepository;
+import com.ap.apbackend.Repository.ProfileRepository;
 import com.ap.apbackend.Service.EducationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,4 +73,41 @@ public class EducationController {
     educationService.deleteById(education.getId());
     return "Education with ID :" + id + " is deleted";
   }
+
+  @Autowired
+  private ProfileRepository profileRepository;
+
+  @Autowired
+  private EducationRepository educationRepository;
+
+  @GetMapping("/profiles/{profileId}/education")
+  public ResponseEntity<List<Education>> getAllEducationsByProfileId(
+      @PathVariable(value = "profileId") Long profileId) {
+    if (!profileRepository.existsById(profileId)) {
+      throw new ProfileNotFoundException("Not found Profile with id = " + profileId);
+    }
+    List<Education> educations = educationRepository.findByProfileId(profileId);
+    return new ResponseEntity<>(educations, HttpStatus.OK);
+  }
+
+  @PostMapping("/profiles/{profileId}/education")
+  public ResponseEntity<Education> createEducation(@PathVariable(value = "profileId") Long profileId,
+      @RequestBody Education educationRequest) {
+    Education education = profileRepository.findById(profileId).map(profile -> {
+      educationRequest.setProfile(profile);
+      return educationRepository.save(educationRequest);
+    }).orElseThrow(() -> new ProfileNotFoundException("Not found Profile with id = " + profileId));
+    return new ResponseEntity<>(education, HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/profiles/{profileId}/education")
+  public ResponseEntity<List<Education>> deleteAllEducationsOfProfile(
+      @PathVariable(value = "profileId") Long profileId) {
+    if (!profileRepository.existsById(profileId)) {
+      throw new ProfileNotFoundException("Not found Profile with id = " + profileId);
+    }
+    educationRepository.deleteByProfileId(profileId);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  }
+
 }

@@ -6,10 +6,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import com.ap.apbackend.Exceptions.ProfileNotFoundException;
+import com.ap.apbackend.Model.Experience;
 import com.ap.apbackend.Model.Profile;
+import com.ap.apbackend.Repository.ExperienceRepository;
+import com.ap.apbackend.Repository.ProfileRepository;
 import com.ap.apbackend.Service.ProfileService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,5 +67,41 @@ public class ProfileController {
         .orElseThrow(() -> new ProfileNotFoundException("Profile with " + id + " is Not Found!"));
     profileService.deleteById(profile.getId());
     return "Profile with ID :" + id + " is deleted";
+  }
+
+  @Autowired
+  private ProfileRepository profileRepository;
+
+  @Autowired
+  private ExperienceRepository experienceRepository;
+
+  @GetMapping("/profiles/{profileId}/experiences")
+  public ResponseEntity<List<Experience>> getAllExperiencesByProfileId(
+      @PathVariable(value = "profileId") Long profileId) {
+    if (!profileRepository.existsById(profileId)) {
+      throw new ProfileNotFoundException("Not found Profile with id = " + profileId);
+    }
+    List<Experience> experiences = experienceRepository.findByProfileId(profileId);
+    return new ResponseEntity<>(experiences, HttpStatus.OK);
+  }
+
+  @PostMapping("/profiles/{profileId}/experiences")
+  public ResponseEntity<Experience> createExperience(@PathVariable(value = "profileId") Long profileId,
+      @RequestBody Experience experienceRequest) {
+    Experience experience = profileRepository.findById(profileId).map(profile -> {
+      experienceRequest.setProfile(profile);
+      return experienceRepository.save(experienceRequest);
+    }).orElseThrow(() -> new ProfileNotFoundException("Not found Profile with id = " + profileId));
+    return new ResponseEntity<>(experience, HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/profiles/{profileId}/experiences")
+  public ResponseEntity<List<Experience>> deleteAllExperiencesOfProfile(
+      @PathVariable(value = "profileId") Long profileId) {
+    if (!profileRepository.existsById(profileId)) {
+      throw new ProfileNotFoundException("Not found Profile with id = " + profileId);
+    }
+    experienceRepository.deleteByProfileId(profileId);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
