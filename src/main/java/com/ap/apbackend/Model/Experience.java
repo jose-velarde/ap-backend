@@ -1,6 +1,7 @@
 package com.ap.apbackend.Model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Experience {
   private String position;
   private Date start_date;
   private Date end_date;
-  private String achievements;
+  private List<String> achievements;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
