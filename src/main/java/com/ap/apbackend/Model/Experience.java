@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,6 +35,8 @@ public class Experience {
   private String position;
   private Date start_date;
   private Date end_date;
+  @Column
+  @ElementCollection(targetClass = String.class)
   private List<String> achievements;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
