@@ -1,5 +1,6 @@
 package com.ap.apbackend.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -19,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -34,14 +37,20 @@ public class Skills {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "skills_id")
   private Long id;
-  @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "soft_skills_id"))
-  @OrderColumn
-  private List<Skill> soft_skills;
-  @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "hard_skills_id"))
-  @OrderColumn
-  private List<Skill> hard_skills;
+  // @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name =
+  // "soft_skills_id"))
+  // @Cascade(value = { CascadeType.ALL })
+  // @OrderColumn
+  @ElementCollection(targetClass = Skill.class)
+  @LazyCollection(LazyCollectionOption.FALSE)
+  private List<Skill> soft_skills = new ArrayList<>();
+  // @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name =
+  // "hard_skills_id"))
+  // @Cascade(value = { CascadeType.ALL })
+  // @OrderColumn
+  @ElementCollection(targetClass = Skill.class)
+  @LazyCollection(LazyCollectionOption.FALSE)
+  private List<Skill> hard_skills = new ArrayList<>();
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
