@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -33,12 +35,16 @@ public class Skills {
   @Column(name = "skills_id")
   private Long id;
   @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "soft_skills_id"))
+  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "skills_id"))
   @OrderColumn
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @Cascade(value = { CascadeType.ALL })
   private List<Skill> soft_skills;
   @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "hard_skills_id"))
+  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "skills_id"))
   @OrderColumn
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @Cascade(value = { CascadeType.ALL })
   private List<Skill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
