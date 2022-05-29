@@ -37,19 +37,16 @@ public class Skills {
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "skills_id"))
   @OrderColumn
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @Cascade(value = { CascadeType.ALL })
   private List<Skill> soft_skills;
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "skills_id"))
   @OrderColumn
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @Cascade(value = { CascadeType.ALL })
   private List<Skill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
+  @Cascade(value = { CascadeType.ALL })
   @JsonIgnore
   private Profile profile;
 
