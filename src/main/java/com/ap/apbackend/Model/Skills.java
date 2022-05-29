@@ -32,10 +32,10 @@ public class Skills {
   @Column(name = "skills_id")
   private Long id;
   @Column
-  @ElementCollection(targetClass = String.class)
+  @ElementCollection()
   private List<Map<String, Number>> soft_skills;
   @Column
-  @ElementCollection(targetClass = String.class)
+  @ElementCollection()
   private List<Map<String, Number>> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
