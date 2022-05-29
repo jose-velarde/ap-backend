@@ -68,3 +68,17 @@
       ]
   }
 ]
+{
+  "soft_skills": [
+    { "skill_name": "Communication", "score": 100 },
+    { "skill_name": "Time Management", "score": 100 },
+    { "skill_name": "Teamwork", "score": 100 },
+    { "skill_name": "Problem Solving", "score": 100 }    
+  ],
+  "hard_skills": [
+    { "skill_name": "Angular", "score": 100 },
+    { "skill_name": "Java Spring boot", "score": 100 },
+    { "skill_name": "Go", "score": 100 },
+    { "skill_name": "React", "score": 100 }
+  ]
+}
