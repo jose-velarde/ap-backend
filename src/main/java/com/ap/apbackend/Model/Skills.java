@@ -36,7 +36,7 @@ public class Skills {
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "profile_id"))
   @OrderColumn
-  private List<Skill> soft_profile_id;
+  private List<Skill> soft_skills;
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "profile_id"))
   @OrderColumn
