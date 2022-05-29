@@ -7,10 +7,12 @@ import javax.transaction.Transactional;
 import com.ap.apbackend.Model.Skills;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 
 public interface SkillsRepository extends JpaRepository<Skills, Long> {
   List<Skills> findByProfileId(Long profileId);
 
+  @Modifying
   @Transactional
   void deleteByProfileId(Long profileId);
 
