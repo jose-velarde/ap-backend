@@ -33,11 +33,11 @@ public class Skills {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "skills_id")
   private Long id;
-  @ElementCollection(fetch = FetchType.EAGER)
+  @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "soft_skills_id"))
   @OrderColumn
   private List<Skill> soft_skills;
-  @ElementCollection(fetch = FetchType.EAGER)
+  @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "hard_skills_id"))
   @OrderColumn
   private List<Skill> hard_skills;
