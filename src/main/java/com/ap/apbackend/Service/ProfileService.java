@@ -32,7 +32,7 @@ public class ProfileService implements IProfileService {
   @Override
   public Profile save(Profile profile) {
     return profileRepository.save(profile);
-  } 
+  }
 
   @Override
   public void deleteById(Long id) {

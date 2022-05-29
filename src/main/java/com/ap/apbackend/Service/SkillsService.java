@@ -7,8 +7,11 @@ import com.ap.apbackend.Model.Skills;
 import com.ap.apbackend.Repository.SkillsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SkillsService implements ISkillsService {
+
   SkillsRepository skillsRepository;
 
   @Autowired
