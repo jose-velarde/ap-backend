@@ -90,11 +90,11 @@ public class SkillsController {
   @PostMapping("/profiles/{profileId}/skills")
   public ResponseEntity<Skills> createSkills(@PathVariable(value = "profileId") Long profileId,
       @RequestBody Skills skillsRequest) {
-    Skills skill = profileRepository.findById(profileId).map(profile -> {
+    Skills skills = profileRepository.findById(profileId).map(profile -> {
       skillsRequest.setProfile(profile);
       return skillsRepository.save(skillsRequest);
     }).orElseThrow(() -> new ProfileNotFoundException("Not found Profile with id = " + profileId));
-    return new ResponseEntity<>(skill, HttpStatus.CREATED);
+    return new ResponseEntity<>(skills, HttpStatus.CREATED);
   }
 
   @DeleteMapping("/profiles/{profileId}/skills")

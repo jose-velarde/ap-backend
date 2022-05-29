@@ -12,6 +12,6 @@ public interface SkillsRepository extends JpaRepository<Skills, Long> {
   List<Skills> findByProfileId(Long profileId);
 
   @Transactional
-  void deleteByProfileId(long profileId);
+  void deleteByProfileId(Long profileId);
 
 }
