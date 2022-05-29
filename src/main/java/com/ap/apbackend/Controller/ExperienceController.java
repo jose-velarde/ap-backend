@@ -59,11 +59,11 @@ public class ExperienceController {
     Experience experienceMatch = experienceService.findById(id)
         .orElseThrow(() -> new ExperienceNotFoundException("Experience with " + id + " is Not Found!"));
     experienceMatch.setCompany(newExperience.getCompany());
-    experienceMatch.setCompany(newExperience.getCompany());
+    experienceMatch.setCompany_img_url(newExperience.getCompany_img_url());
     experienceMatch.setLocation(newExperience.getLocation());
-    experienceMatch.setPosition(newExperience.getPosition());
-    experienceMatch.setPosition(newExperience.getPosition());
-    experienceMatch.setPosition(newExperience.getPosition());
+    experienceMatch.setStart_date(newExperience.getStart_date());
+    experienceMatch.setEnd_date(newExperience.getEnd_date());
+    experienceMatch.setAchievements(newExperience.getAchievements());
     return experienceService.save(experienceMatch);
   }
 
