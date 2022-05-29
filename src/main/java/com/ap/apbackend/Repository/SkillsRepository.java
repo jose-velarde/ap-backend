@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.Modifying;
 public interface SkillsRepository extends JpaRepository<Skills, Long> {
   List<Skills> findByProfileId(Long profileId);
 
-  @Modifying
   @Transactional
   void deleteByProfileId(Long profileId);
 

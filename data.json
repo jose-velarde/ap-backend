@@ -1,0 +1,70 @@
+{
+  "id": 1,
+  "name": "Jose",
+  "lastname": "Velarde",
+  "birth_date": "1988-01-01T00:00:00.000+00:00",
+  "nationality": "Argentina",
+  "email": "josevelarde00@gmail.com",
+  "about": "Electronic Engineer - Software Developer",
+  "ocupation": "Developer",
+  "background_img_url": null,
+  "profile_img_url": null,
+  "address": "Salta, Argentina"
+}
+
+[
+  {
+      "id": 3,
+      "degree": "Electronic Engineer",
+      "institution": "National University of Córdoba",
+      "location": "Córdoba, Argentina",
+      "institution_img_url": "",
+      "career": "Electronic Engineering",
+      "grade": "7.6",
+      "start_date": "2006-02-01T00:00:00.000+00:00",
+      "end_date": "2019-05-01T00:00:00.000+00:00"
+  },
+  {
+      "id": 2,
+      "degree": "Space Science Master Degree",
+      "institution": "National Institute for Space Research",
+      "location": "São Paulo, Brazil",
+      "institution_img_url": "institution_img_url",
+      "career": "Space Science MSc",
+      "grade": "A-",
+      "start_date": "2019-06-01T00:00:00.000+00:00",
+      "end_date": "2022-06-01T00:00:00.000+00:00"
+  }
+]
+
+[
+  {
+      "id": 5,
+      "company": "National Institute for Space Research ‑ INPE",
+      "company_img_url": "",
+      "location": "São Paulo - Brazil",
+      "position": "CNPq Scholarship Student - Space Science MSc",
+      "start_date": "2019-06-01T00:00:00.000+00:00",
+      "end_date": "2022-06-01T00:00:00.000+00:00",
+      "achievements": [
+          "Participated in field/remote research campaigns to observe convective storms and study upper atmospheric phenomena.",
+          "Developed an intense thunderstorm nowcasting Python software to identify electrically active regions.",
+          "Developed a motion detection Python software to capture short-lived optical phenomena.",
+          "Developed a PyQT5 GUI to handle the operation of Arduino-based motion system."
+      ]
+  },
+  {
+      "id": 4,
+      "company": "Alkemy Labs",
+      "company_img_url": "",
+      "location": "Argentina (Remote)",
+      "position": "Alkemy React Acceleration - Somos más ONG project",
+      "start_date": "2021-08-01T00:00:00.000+00:00",
+      "end_date": "2021-10-01T00:00:00.000+00:00",
+      "achievements": [
+          "Participated in a 5-sprint project to develop a website for the 'Somos más' ONG in a real work environment",
+          "Developed front-end sections, as well as the website back office management sections.",
+          "Attended daily scrum ceremonies, weekly planning/reviews as a member of the development team"
+      ]
+  }
+]
