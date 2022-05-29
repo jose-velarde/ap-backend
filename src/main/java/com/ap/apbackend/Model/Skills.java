@@ -33,10 +33,10 @@ public class Skills {
   private Long id;
   @Column
   @ElementCollection
-  private List<Map<String, Number>> soft_skills;
+  private Map<String, Number> soft_skills;
   @Column
   @ElementCollection
-  private List<Map<String, Number>> hard_skills;
+  private Map<String, Number> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
