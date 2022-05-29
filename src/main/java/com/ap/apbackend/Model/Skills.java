@@ -34,11 +34,11 @@ public class Skills {
   @Column(name = "skills_id")
   private Long id;
   @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "profile_id"))
+  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "skills"))
   @OrderColumn
   private List<Skill> soft_skills;
   @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "profile_id"))
+  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "skills"))
   @OrderColumn
   private List<Skill> hard_skills;
 
