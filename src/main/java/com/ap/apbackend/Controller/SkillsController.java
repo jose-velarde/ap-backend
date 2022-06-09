@@ -58,8 +58,8 @@ public class SkillsController {
       @Valid @RequestBody Skills newSkills) {
     Skills skillsMatch = skillsService.findById(id)
         .orElseThrow(() -> new SkillsNotFoundException("Skills with " + id + " is Not Found!"));
-    // skillsMatch.setSoft_skills(newSkills.getSoft_skills());
-    // skillsMatch.setHard_skills(newSkills.getHard_skills());
+    skillsMatch.setSoft_skills(newSkills.getSoft_skills());
+    skillsMatch.setHard_skills(newSkills.getHard_skills());
     return skillsService.save(skillsMatch);
   }
 
