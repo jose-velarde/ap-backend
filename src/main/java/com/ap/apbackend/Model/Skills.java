@@ -2,9 +2,12 @@ package com.ap.apbackend.Model;
 
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,11 +36,17 @@ public class Skills {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "skills_id")
   private Long id;
-  @ElementCollection
-  @CollectionTable(name = "soft_skills", joinColumns = @JoinColumn(name = "soft_skills_id"))
+  @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "skill_name", column = @Column(name = "soft_skills_name")),
+      @AttributeOverride(name = "score", column = @Column(name = "soft_skills_score")),
+  })
   private List<Skill> soft_skills;
-  @ElementCollection
-  @CollectionTable(name = "hard_skills", joinColumns = @JoinColumn(name = "hard_skills_id"))
+  @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "skill_name", column = @Column(name = "hard_skills_name")),
+      @AttributeOverride(name = "score", column = @Column(name = "hard_skills_score")),
+  })
   private List<Skill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
