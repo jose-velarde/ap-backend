@@ -50,7 +50,6 @@ public class Skills {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @Cascade(value = { CascadeType.ALL })
   @JsonIgnore
   private Profile profile;
 
