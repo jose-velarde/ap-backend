@@ -48,11 +48,6 @@ public class SkillsController {
     return skills;
   }
 
-  @PostMapping(value = "/skills")
-  public Skills addSkills(@Valid @RequestBody Skills skills) {
-    return skillsService.save(skills);
-  }
-
   @PutMapping(value = "/skills/{id}")
   public Skills updateSkills(@PathVariable("id") @Min(1) Long id,
       @Valid @RequestBody Skills newSkills) {
@@ -95,6 +90,19 @@ public class SkillsController {
       return skillsRepository.save(skillsRequest);
     }).orElseThrow(() -> new ProfileNotFoundException("Not found Profile with id = " + profileId));
     return new ResponseEntity<>(skills, HttpStatus.CREATED);
+  }
+
+  @PutMapping("/profiles/{profileId}/skills")
+  public Skills updateProfileSkills(@PathVariable("profileId") @Min(1) Long profileId,
+      @Valid @RequestBody Skills newSkills) {
+    if (!profileRepository.existsById(profileId)) {
+      throw new ProfileNotFoundException("Not found Profile with id = " + profileId);
+    }
+    List<Skills> skills = skillsRepository.findByProfileId(profileId);
+    Skills skillsMatch = skills.get(0);
+    skillsMatch.setSoft_skills(newSkills.getSoft_skills());
+    skillsMatch.setHard_skills(newSkills.getHard_skills());
+    return skillsService.save(skillsMatch);
   }
 
   @DeleteMapping("/profiles/{profileId}/skills")
