@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Embeddable
-public class Skill {
-  private String skill_name;
+public class HardSkill {
+  private String soft_skill_name;
   private Number score;
 }

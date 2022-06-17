@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -36,16 +34,16 @@ public class Skills {
   private Long id;
   @Embedded
   @AttributeOverrides({
-      @AttributeOverride(name = "skill_name", column = @Column(name = "soft_skills_name")),
+      @AttributeOverride(name = "soft_skill_name", column = @Column(name = "soft_skills_name")),
       @AttributeOverride(name = "score", column = @Column(name = "soft_skills_score")),
   })
-  private List<Skill> soft_skills;
+  private List<SoftSkill> soft_skills;
   @Embedded
   @AttributeOverrides({
-      @AttributeOverride(name = "skill_name", column = @Column(name = "hard_skills_name")),
+      @AttributeOverride(name = "hard_skill_name", column = @Column(name = "hard_skills_name")),
       @AttributeOverride(name = "score", column = @Column(name = "hard_skills_score")),
   })
-  private List<Skill> hard_skills;
+  private List<HardSkill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
