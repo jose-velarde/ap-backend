@@ -10,5 +10,5 @@ import lombok.Setter;
 @Embeddable
 public class SoftSkill {
   private String soft_skill_name;
-  private Number score;
+  private Number soft_skill_score;
 }

@@ -33,8 +33,16 @@ public class Skills {
   @Column(name = "skills_id")
   private Long id;
   @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "soft_skill_name", column = @Column(name = "soft_skills_name")),
+      @AttributeOverride(name = "score", column = @Column(name = "soft_skills_score")),
+  })
   private List<SoftSkill> soft_skills;
   @Embedded
+  @AttributeOverrides({
+      @AttributeOverride(name = "hard_skill_name", column = @Column(name = "hard_skills_name")),
+      @AttributeOverride(name = "score", column = @Column(name = "hard_skills_score")),
+  })
   private List<HardSkill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
