@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,17 +34,11 @@ public class Skills {
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "skills_id")
   private Long id;
-  @Embedded
-  @AttributeOverrides({
-      @AttributeOverride(name = "soft_skill_name", column = @Column(name = "soft_skills_name")),
-      @AttributeOverride(name = "score", column = @Column(name = "soft_skills_score")),
-  })
+  @ElementCollection
+  @CollectionTable
   private List<SoftSkill> soft_skills;
-  @Embedded
-  @AttributeOverrides({
-      @AttributeOverride(name = "hard_skill_name", column = @Column(name = "hard_skills_name")),
-      @AttributeOverride(name = "score", column = @Column(name = "hard_skills_score")),
-  })
+  @ElementCollection
+  @CollectionTable
   private List<HardSkill> hard_skills;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
