@@ -82,3 +82,90 @@
     { "skill_name": "React", "score": 100 }
   ]
 }
+
+[
+  {
+      "id": 1,
+      "project_name": "One page resume template",
+      "project_url": "https://jose-velarde.github.io/one-page-resume/",
+      "repository_url": "https://github.com/jose-velarde/one-page-resume",
+      "description": "React SPA - Frontend personal project",
+      "stack": [
+          "React",
+          "Material UI",
+          "Github Pages"
+      ]
+  },
+  {
+    "id": 2,
+    "project_name": "Alkemy Labs - React Front",
+    "project_url": "https://superteambuilder.netlify.app/",
+    "repository_url": "https://github.com/jose-velarde/alkemy-react-challenge-material-ui",
+    "description": "React SPA for Alkemy Labs Frontend Challenge",
+    "stack": [
+        "React",
+        "Material UI",
+        "axios",
+        "Formik",
+        "Yup",
+        "Netlify"
+    ]
+  },  
+  {
+    "id": 3,
+    "project_name": "Courses Store - Nextjs Front",
+    "project_url": "https://crehana-challenge-front.vercel.app/",
+    "repository_url": "https://github.com/jose-velarde/crehana-challenge-front",
+    "description": "Next/Typescript Frontend - Fullstack practice",
+    "stack": [
+        "Next",
+        "Typescript",
+        "Tailwind",
+        "eslint",
+        "axios",
+        "Formik",
+        "Yup",
+        "Vercel"
+    ]
+  },
+  {
+    "id": 4,
+    "project_name": "Courses Store - Django Back",
+    "project_url": "https://jose-velarde-drf.herokuapp.com/crehana/",
+    "repository_url": "https://github.com/jose-velarde/crehana-challenge-back",
+    "description": "REST API with Django Rest Framework - Fullstack practice",
+    "stack": [
+        "Django Rest Framework",
+        "Python",
+        "Postgres",
+        "Heroku"
+    ]
+  },
+  {
+    "id": 5,
+    "project_name": "Personal Portfolio - Angular Front",
+    "project_url": "https://jvelarde-ap-frontend.web.app/",
+    "repository_url": "https://github.com/jose-velarde/portfolio-ap-frontend",
+    "description": "Angular SPA for Argentina Programa Fullstack Course",
+    "stack": [
+        "Angular",
+        "Typescript",
+        "Tailwind",
+        "eslint",
+        "Firebase"
+    ]
+  },
+  {
+    "id": 6,
+    "project_name": "Personal Portfolio - Java Spring Boot Back",
+    "project_url": "https://jvelarde-ap-backend.herokuapp.com/api/",
+    "repository_url": "https://github.com/jose-velarde/crehana-challenge-back",
+    "description": "REST API with Java for Argentina Programa Fullstack Course",
+    "stack": [
+        "Java Spring Boot",
+        "Hibernate",
+        "Postgres",
+        "Heroku"
+    ]
+  }
+]

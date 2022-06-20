@@ -2,7 +2,6 @@ package com.ap.apbackend.Model;
 
 import java.util.List;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,26 +20,25 @@ import org.hibernate.annotations.OnDeleteAction;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "skills")
-public class Skills {
+public class Project {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  @Column(name = "skills_id")
+  @Column(name = "project_id")
   private Long id;
-  @ElementCollection
-  @CollectionTable
-  private List<SoftSkill> soft_skills;
-  @ElementCollection
-  @CollectionTable
-  private List<HardSkill> hard_skills;
+  private String project_name;
+  private String project_url;
+  private String repository_url;
+  private String description;
+  @Column
+  @ElementCollection(targetClass = String.class)
+  private List<String> stack;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "profile_id", nullable = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JsonIgnore
   private Profile profile;
-
 }
