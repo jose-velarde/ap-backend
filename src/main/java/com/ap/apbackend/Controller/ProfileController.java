@@ -57,7 +57,14 @@ public class ProfileController {
         .orElseThrow(() -> new ProfileNotFoundException("Profile with " + id + " is Not Found!"));
     profileMatch.setName(newProfile.getName());
     profileMatch.setLastname(newProfile.getLastname());
+    profileMatch.setBirth_date(newProfile.getBirth_date());
+    profileMatch.setNationality(newProfile.getNationality());
     profileMatch.setEmail(newProfile.getEmail());
+    profileMatch.setAbout(newProfile.getAbout());
+    profileMatch.setOcupation(newProfile.getOcupation());
+    profileMatch.setBackground_img_url(newProfile.getBackground_img_url());
+    profileMatch.setProfile_img_url(newProfile.getProfile_img_url());
+    profileMatch.setAddress(newProfile.getAddress());
     return profileService.save(profileMatch);
   }
 
