@@ -2,9 +2,9 @@ package com.ap.apbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.web.servlet.config.annotation.CorsRegistry;
+// import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class ApBackendApplication {
@@ -13,14 +13,15 @@ public class ApBackendApplication {
     SpringApplication.run(ApBackendApplication.class, args);
   }
 
-  @Bean
-  public WebMvcConfigurer corsConfigurer() {
-    return new WebMvcConfigurer() {
-      @Override
-      public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE",
-            "OPTIONS").allowedHeaders("*");
-      }
-    };
-  }
+  // @Bean
+  // public WebMvcConfigurer corsConfigurer() {
+  // return new WebMvcConfigurer() {
+  // @Override
+  // public void addCorsMappings(CorsRegistry registry) {
+  // registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("GET",
+  // "PUT", "POST", "PATCH", "DELETE",
+  // "OPTIONS").allowedHeaders("*");
+  // }
+  // };
+  // }
 }
