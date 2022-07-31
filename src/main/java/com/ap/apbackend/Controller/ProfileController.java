@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
 @RequestMapping("/api")
 public class ProfileController {
   ProfileService profileService;
@@ -36,13 +36,11 @@ public class ProfileController {
     this.profileService = profileService;
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @GetMapping(value = "/profiles")
   public List<Profile> getAllProfiles() {
     return profileService.getAllProfiles();
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @GetMapping(value = "/profiles/{id}")
   public Profile getProfileById(@PathVariable("id") @Min(1) Long id) {
     Profile profile = profileService.findById(id)
@@ -50,13 +48,11 @@ public class ProfileController {
     return profile;
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @PostMapping(value = "/profiles")
   public Profile addProfile(@Valid @RequestBody Profile profile) {
     return profileService.save(profile);
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @PutMapping(value = "/profiles/{id}")
   public Profile updateProfile(@PathVariable("id") @Min(1) Long id, @Valid @RequestBody Profile newProfile) {
     Profile profileMatch = profileService.findById(id)
@@ -67,7 +63,6 @@ public class ProfileController {
     return profileService.save(profileMatch);
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @DeleteMapping(value = "/profiles/{id}")
   public String deleteProfile(@PathVariable("id") @Min(1) Long id) {
     Profile profile = profileService.findById(id)
@@ -82,7 +77,6 @@ public class ProfileController {
   @Autowired
   private ExperienceRepository experienceRepository;
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @GetMapping("/profiles/{profileId}/experiences")
   public ResponseEntity<List<Experience>> getAllExperiencesByProfileId(
       @PathVariable(value = "profileId") Long profileId) {
@@ -93,7 +87,6 @@ public class ProfileController {
     return new ResponseEntity<>(experiences, HttpStatus.OK);
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @PostMapping("/profiles/{profileId}/experiences")
   public ResponseEntity<Experience> createExperience(@PathVariable(value = "profileId") Long profileId,
       @RequestBody Experience experienceRequest) {
@@ -104,7 +97,6 @@ public class ProfileController {
     return new ResponseEntity<>(experience, HttpStatus.CREATED);
   }
 
-  @CrossOrigin(origins = "http://localhost:4200")
   @DeleteMapping("/profiles/{profileId}/experiences")
   public ResponseEntity<List<Experience>> deleteAllExperiencesOfProfile(
       @PathVariable(value = "profileId") Long profileId) {
