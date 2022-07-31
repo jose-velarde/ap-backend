@@ -18,7 +18,8 @@ public class ApBackendApplication {
     return new WebMvcConfigurer() {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("*");
+        registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE",
+            "OPTIONS").allowedHeaders("*");
       }
     };
   }
