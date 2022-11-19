@@ -22,7 +22,7 @@ public class SwaggerConfig {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
         .apis(RequestHandlerSelectors.basePackage("com.ap.apbackend.Controller"))
-        .paths(PathSelectors.any())
+        .paths(PathSelectors.regex("/api/education"))
         .build()
         .apiInfo(getApiInfo());
   }
