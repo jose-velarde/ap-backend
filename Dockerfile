@@ -12,4 +12,4 @@ RUN mvn -f /home/app/pom.xml clean package
 FROM openjdk:11-jre-slim
 COPY --from=build /home/app/target/ap-backend-0.0.1-SNAPSHOT.jar /usr/local/lib/ap-backend.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/ap.jar"]
+ENTRYPOINT ["java","-jar","/usr/local/lib/ap-backend.jar"]  
